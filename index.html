@@ -26,7 +26,9 @@
       let a = eval(document.querySelector('#a').value)
       let b = eval(document.querySelector('#b').value)
       render({a,b})
-      coerceCompare(a, b)
+      let res = String(coerceCompare(a, b))
+      console.log(res)
+      render(null, res)
     }
 
   </script>

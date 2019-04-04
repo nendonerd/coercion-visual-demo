@@ -86,22 +86,25 @@ function renderInNode({ a, b }, end) {
 }
 
 // ENV: Browser
-function renderInBrowser({ a, b }, end) {
+function renderInBrowser(data, end) {
 
-  let typeA = typeOf(a) //?
-  let typeB = typeOf(b)
   let msg
 
   if (end !== undefined) {
     msg = String(end)
   } else {
-    msg = ('a: ' + typeA + ' | ' + 'b: ' + typeB)
+    let typeA = typeOf(data.a)
+    let typeB = typeOf(data.b)
+    msg = (`a: ${JSON.stringify(data.a)}, type: ${typeA}`).padEnd(30, ' ') + '|' + ' '.repeat(10) + (`b: ${JSON.stringify(data.b)}, type: ${typeB}`)
   }
 
   let result = document.querySelector('.result')
 
   let step = document.createElement('li')
-  step.textContent = msg
+  let pre = document.createElement('pre') // for preserving spaces
+
+  pre.textContent = msg
+  step.append(pre)
 
   result.append(step)
 
