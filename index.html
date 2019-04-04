@@ -8,20 +8,134 @@
   <title>Coercion Visual Demo</title>
   <script src="./coercion.js"></script>
   <style>
+    html, * {
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+
+    .wrapper {
+      position: absolute;
+      transform: translate(-50%, 0);
+      left: 50%;
+      top: 0%;
+      bottom: 5%;
+      margin: 5% 0;
+      height: 900px;
+      width: 60%;
+      /* border: 1px solid black; */
+      box-shadow: 0 0 1em rgba(0,0,0,.2);
+      padding: 2%;
+
+    }
+
+
+
+    .intro > p {
+      font-size: 20px;
+      margin: 16px;
+    }
+
+    .test {
+      float: right;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      /* flex-wrap: wrap; */
+    }
+    .test input {
+      margin-right: 10px;
+    }
+    .test .case {
+      margin-top: 2px;
+    }
+
     .coercion {
       display: flex;
+      height: 50px;
+      margin: 20px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 50px;
+    }
+    .coercion:valid .coerce {
+      background: red;
+    }
+    .coercion:valid .clear {
+      background: lightskyblue;
+    }
+    .coercion .button {
+      all: unset;
+      /* border: 1px solid black; */
+      width: 4em;
+      background: gold;
+      margin-left: 5px;
+      font-weight: bold;
+      /* padding-left: 10px; */
+    }
+    .coercion .equal {
+      /* border: 1px solid black; */
+      font-size: 40px;
+      margin: 0 10px;
+    }
+    .coercion .input {
+      width: 80px;
+      /* padding-left: 40px; */
+      font-size: 20px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .result {
+      /* display: grid; */
+      margin: 20px;
+    }
+
+    .credit {
+      position: fixed;
+      bottom: 0;
+      font-size: 30px;
+      margin: 20px;
     }
   </style>
 </head>
 <body>
-  <div class='coercion'>
-    <input type="text" id='a'/></input><p>==</p><input type="text" id='b'/>
+  <div class="wrapper">
+
+  <div class="intro">
+    <h1>Coercion Visual Demo</h1>
+    <p>this is an interactive demo about javascript type coercion in '==' (loosy equalling operator).
+    It follows the complicated
+    <a href="https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison">ECMA spec coercion rules</a>
+    to show every step of type conversions in a coercion.</p>
   </div>
-  <button>Coerce!</button>
+
+  <div class="test">
+    <h2>Quick Test Cases:</h2>
+    <div class="cases"></div>
+  </div>
+
+  <form class='coercion' autocomplete="off">
+    <input type="text" id='a' class='input' required/>
+    <div class='equal'>==</div>
+    <input type="text" id='b' class='input' required/>
+    <input type="submit" class="coerce button" value="Coerce" />
+    <input type="submit" class="clear button" value="Clear" />
+  </form>
   <ol class="result"></ol>
+
+
   <script>
-    let btn = document.querySelector('button')
-    btn.onclick = () => {
+    // Submit test
+    let coerce = document.querySelector('.coerce')
+    coerce.onclick = (e) => {
+      e.preventDefault()
+      if (!e.target.closest('form').checkValidity()) {
+        // input box shining effect
+        alert('input value can\'t be empty')
+        return
+      }
       document.querySelector('.result').innerHTML = ''
       let a = eval(document.querySelector('#a').value)
       let b = eval(document.querySelector('#b').value)
@@ -31,6 +145,84 @@
       render(null, res)
     }
 
+    let clear = document.querySelector('.clear')
+    clear.onclick = (e) => {
+      e.preventDefault()
+      document.querySelector('.result').innerHTML = ''
+      document.querySelector('#a').value = null
+      document.querySelector('#b').value = null
+    }
+
   </script>
+  <script>
+    // Generate test cases
+    let cases = [
+        "[] == []",
+        "({}) == ({})",
+        "({}) == !({})",
+        "({}) == false",
+        "'[object Object]' == 0",
+        "NaN == 0",
+        "[] == {}",
+        "[] == 0",
+        "[2] == 2",
+        "['0'] == false",
+        "'0' == false",
+        "[] == false",
+        "[null] == false",
+        "null == false",
+        "[undefined] == false",
+        "undefined == false",
+        "null == undefined",
+        "null == null",
+        "undefined == undefined",
+        "NaN == NaN",
+        "NaN == undefined",
+        "NaN == null",
+        "undefined == null",
+        "undefined == 'undefined'",
+        "null == 'null'",
+        "'' == !''",
+        "[] == [null] == [undefined] == '' == 0",
+        "[] == [null]",
+        "[] == [undefined]",
+        "[] == ''",
+        "[] == 0",
+        "[null] == [undefined]",
+        "[null] == ''",
+        "[null] == 0",
+        "[undefined] == ''",
+        "[undefined] == 0",
+        "'' == 0"
+      ]
+      .sort()
+    let n = 0
+    let cache = ''
+    cases.forEach(c => {
+      cache += `<div class="case"><input type="radio" value="${c}" name="case" id="case${n}"><label for="case${n}">${c}</label></div>\n`;
+      n++
+    });
+    document.querySelector('.cases').innerHTML = cache
+  </script>
+  <script>
+    // Select test case
+    let test = document.querySelector('.test')
+    test.addEventListener('change', (e) => {
+
+      if (e.target.matches('input')) {
+        let input = e.target
+        console.log(input.value)
+        let [a, b] = input.value.split(' == ')
+        document.querySelector('#a').value = a
+        document.querySelector('#b').value = b
+      }
+    })
+  </script>
+  <div class="credit">
+    <a href="https://github.com/nendonerd/coercion-visual-demo">Github Repo</a><br>
+    <a href="https://nendo.ml">My Blog</a>
+  </div>
+
+  </div>
 </body>
 </html>

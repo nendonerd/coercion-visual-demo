@@ -95,7 +95,7 @@ function renderInBrowser(data, end) {
   } else {
     let typeA = typeOf(data.a)
     let typeB = typeOf(data.b)
-    msg = (`a: ${JSON.stringify(data.a)}, type: ${typeA}`).padEnd(30, ' ') + '|' + ' '.repeat(10) + (`b: ${JSON.stringify(data.b)}, type: ${typeB}`)
+    msg = (`${JSON.stringify(data.a)}, ${typeA}`).padEnd(30, ' ') + '|' + ' '.repeat(10) + (`${JSON.stringify(data.b)}, ${typeB}`)
   }
 
   let result = document.querySelector('.result')

@@ -1,10 +1,14 @@
 # Coercion Visual Demo
 this is an interactive demo about javascript type coercion in '==' (loosy equalling operator)
-It follows the complicated [ECMA spec coercion rules](https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison) to show every step of type conversion happened in a coercion.
+It follows the complicated [ECMA spec coercion rules](https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison) to show every step of type conversions happened in a coercion.
 
-> Warning: I have only test my automation script on Google Cloud Platform. If you're running them on any other host, I'm assuming you know how to write bash to fix potential failure.
+## [Online Example](34.92.228.238)
+## [My Blog](https://nendo.ml)
+
 
 ## Running in Cloud
+> Warning: I have only test my automation script on Google Cloud Platform. If you're running them on any other host, I'm assuming you know how to modify bash script to fix potential failures.
+
 ### How to deploy:
 
 create a new vm that runs latest debian, then ssh into it and paste the following
