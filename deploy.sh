@@ -21,3 +21,8 @@ git clone $GIT_REPO .
 
 sudo docker build -t $IMAGE_NAME .
 sudo docker run -d -p 80:80 $IMAGE_NAME
+
+echo "--------------------"
+echo "IP Address: \n"
+curl ifconfig.me
+echo "\n--------------------"
