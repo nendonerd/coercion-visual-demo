@@ -13,8 +13,11 @@ The comparison x == y, where x and y are values, produces true or false. Such a 
 8. If Type(x) is either String, Number, or Symbol and Type(y) is Object, return the result of the comparison x == ToPrimitive(y).
 9. If Type(x) is Object and Type(y) is either String, Number, or Symbol, return the result of the comparison ToPrimitive(x) == y.
 10. Return false.
-
 */
+
+//////////////////////////////
+THIS VERSION HAS UNFIXED BUGS
+//////////////////////////////
 
 function coerceCompare(a, b) {
   let typeA = Type(a) //?
