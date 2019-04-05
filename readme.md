@@ -42,6 +42,7 @@ Shift + Cmd + P -> quokka start
 
 
 ## Todo list:
-- [ ] add quick tests to frontend
-- [ ] better css visuals
+- [x] add quick tests to frontend
+- [x] unit testing
+- [ ] better css visuals (type highlighting)
 - [ ] node interface

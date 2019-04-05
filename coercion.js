@@ -76,8 +76,8 @@ const render = (() => {
 
 // ENV: Node
 function renderInNode({ a, b }, end) {
-  let typeA = Type(a) //?
-  let typeB = Type(b)
+  let typeA = typeOf(a) //?
+  let typeB = typeOf(b)
   if (end !== undefined) {
     return String(end) //?
   } else {
@@ -121,3 +121,6 @@ function renderInBrowser(data, end) {
   result.append(step)
 
 }
+
+
+if (module) {module.exports = coerceCompare}
