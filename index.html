@@ -15,89 +15,315 @@
     }
 
 
-    .wrapper {
-      position: absolute;
-      transform: translate(-50%, 0);
-      left: 50%;
-      top: 0%;
-      bottom: 5%;
-      margin: 5% 0;
-      height: 900px;
-      width: 60%;
-      /* border: 1px solid black; */
-      box-shadow: 0 0 1em rgba(0,0,0,.2);
-      padding: 2%;
 
+    /* default */
+    .intro {
+      display: none;
     }
-
-
-
-    .intro > p {
-      font-size: 20px;
-      margin: 16px;
-    }
-
     .test {
-      float: right;
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      /* flex-wrap: wrap; */
+      display: none;
     }
-    .test input {
-      margin-right: 10px;
+
+    .desc {
+      display: none;
     }
-    .test .case {
-      margin-top: 2px;
-    }
+
 
     .coercion {
-      display: flex;
-      height: 50px;
-      margin: 20px;
-      text-align: center;
-      vertical-align: middle;
-      line-height: 50px;
-    }
-    .coercion:valid .coerce {
-      background: red;
-    }
-    .coercion:valid .clear {
-      background: lightskyblue;
-    }
-    .coercion .button {
-      all: unset;
-      /* border: 1px solid black; */
-      width: 4em;
-      background: gold;
-      margin-left: 5px;
-      font-weight: bold;
-      /* padding-left: 10px; */
-    }
-    .coercion .equal {
-      /* border: 1px solid black; */
-      font-size: 40px;
-      margin: 0 10px;
-    }
-    .coercion .input {
-      width: 80px;
-      /* padding-left: 40px; */
-      font-size: 20px;
-      text-align: center;
-      vertical-align: middle;
+        margin: 20px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 50px;
+
+        height: auto;
+        /* border: 1px solid black; */
+      }
+      .coercion:valid .coerce {
+        background: lightcoral;
+        color: black;
+        cursor: pointer;
+      }
+      .coercion:valid .clear {
+        background: lightskyblue;
+        color: black;
+        cursor: pointer;
+      }
+      .coercion .button {
+        all: unset;
+        /* border: 1px solid black; */
+        width: 4em;
+        background: #666B85;
+        color: white;
+        cursor: not-allowed;
+        /* margin-left: 5px; */
+        font-weight: bold;
+
+        /* display: block; */
+        margin: 0 10px;
+
+        border: 1px solid #C1C3D1;
+        border-radius:3px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1)
+      }
+      .coercion .buttonWrapper {
+        display: block;
+        margin: 20px;
+      }
+      .coercion .equal {
+        /* border: 1px solid black; */
+        /* font-size: 40px; */
+        margin: 0 10px;
+
+        /* text-align: bottom; */
+        vertical-align: bottom;
+        display: inline-block;
+        font-size: 40px;
+        /* border: 1px solid black; */
+      }
+      .coercion .input {
+        width: 80px;
+        /* padding-left: 40px; */
+        font-size: 20px;
+        text-align: center;
+        vertical-align: middle;
+
+        display: inline;
+
+        height: 50px;
+
+        border: 1px solid #C1C3D1;
+        border-radius:3px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1)
+      }
+
+      table.result {
+        background: white;
+        border-radius:3px;
+        border-collapse: collapse;
+        height: auto;
+        margin: auto;
+        margin-top: 40px;
+        max-width: 600px;
+        padding:5px;
+        width: 80%;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        animation: float 5s infinite;
+      }
+
+      tr {
+        border-top: 1px solid #C1C3D1;
+        border-bottom: 1px solid #C1C3D1;
+        color:#666B85;
+        font-size:16px;
+        font-weight:normal;
+        text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+      }
+
+      tr:hover td {
+        background:#4E5066;
+        color:#FFFFFF;
+        border-top: 1px solid #22262e;
+      }
+
+      tr:first-child {
+        border-top:none;
+      }
+
+      tr:last-child {
+        border-bottom:none;
+      }
+
+      tr:nth-child(odd) td {
+        background:#EBEBEB;
+      }
+
+      tr:nth-child(odd):hover td {
+        background:#4E5066;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius:3px;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius:3px;
+      }
+
+      td {
+        background:#FFFFFF;
+        padding:10px;
+        text-align:left;
+        vertical-align:middle;
+        font-weight:300;
+        font-size:18px;
+        text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+        border-right: 1px solid #C1C3D1;
+        width: 50%;
+      }
+
+      td:last-child {
+        border-right: 0px;
+      }
+
+      /* th {
+        text-align: center;
+      } */
+
+      td {
+        text-align: center;
+      }
+
+
+      .ribbon {
+        background-color: #a00;
+        overflow: hidden;
+        white-space: nowrap;
+        position: absolute;
+        bottom: 0px;
+        transform: translate(-55%, -30%);
+
+        box-shadow: 0 0 10px #888;
+      }
+      .ribbon a {
+        border: 1px solid #faa;
+        color: #fff;
+        display: block;
+        font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        margin: 1px 0;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 0 5px #444;
+      }
+      .ribbon a:hover {
+        cursor: pointer;
+        background-color: #ea7600;
+        /* color: black; */
+      }
+
+
+
+
+    /* wide screen */
+
+
+
+    @media (min-width: 900px) {
+      .wrapper {
+        position: absolute;
+        transform: translate(-50%, 0);
+        left: 50%;
+        top: 0%;
+        bottom: 5%;
+        margin: 5% 0;
+        height: 950px;
+        width: 80%;
+        /* border: 1px solid black; */
+        box-shadow: 0 0 1em rgba(0,0,0,.2);
+        padding: 2%;
+
+      }
+
+      .intro {
+        display: block;
+        /* position: absolute; */
+        margin: 30px;
+        margin-bottom: 40px;
+        /* border: 1px solid black; */
+        width: fit-content;
+        margin: 30px auto;
+        margin-bottom: 50px;
+      }
+
+      .intro > p {
+        font-size: 20px;
+        margin: 16px;
+      }
+
+      .test {
+        float: right;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
+      }
+      .test input {
+        margin-right: 10px;
+      }
+      .test .case {
+        margin-top: 2px;
+      }
+
+      .coercion {
+        display: flex;
+        height: 50px;
+        margin: 20px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 50px;
+        width: fit-content;
+        margin: 0 auto;
+        /* border: 1px solid black; */
+      }
+      .coercion .buttonWrapper {
+        /* border: 1px solid black; */
+        display: block;
+        height: 100%;
+        margin: 0;
+        margin-left: 20px;
+      }
+      .coercion .button {
+        /* display: block; */
+        /* vertical-align: top; */
+
+      }
+
+      .coercion .equal {
+        /* border: 1px solid black; */
+        font-size: 40px;
+        margin: 0 10px;
+      }
+      .coercion .input {
+        width: 80px;
+        /* padding-left: 40px; */
+        font-size: 20px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .result {
+        /* display: grid; */
+        margin: 20px;
+      }
+
+      .desc {
+        position: fixed;
+        bottom: 0;
+        font-size: 16px;
+        margin: 20px;
+        margin-left: 150px;
+      }
     }
 
-    .result {
-      /* display: grid; */
-      margin: 20px;
+
+    @media (min-width: 1200px) {
+      .wrapper {
+        width: 70%;
+      }
+      .test {
+        width: 30%
+      }
+      .ribbon {
+        left: -40px;
+        bottom: 50px;
+        transform: rotate(45deg);
+      }
     }
 
-    .credit {
-      position: fixed;
-      bottom: 0;
-      font-size: 30px;
-      margin: 20px;
-    }
   </style>
 </head>
 <body>
@@ -105,10 +331,7 @@
 
   <div class="intro">
     <h1>Coercion Visual Demo</h1>
-    <p>this is an interactive demo about javascript type coercion in '==' (loosy equalling operator).
-    It follows the complicated
-    <a href="https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison">ECMA spec coercion rules</a>
-    to show every step of type conversions in a coercion.</p>
+
   </div>
 
   <div class="test">
@@ -120,10 +343,12 @@
     <input type="text" id='a' class='input' required/>
     <div class='equal'>==</div>
     <input type="text" id='b' class='input' required/>
+    <div class="buttonWrapper">
     <input type="submit" class="coerce button" value="Coerce" />
     <input type="submit" class="clear button" value="Clear" />
+    </div>
   </form>
-  <ol class="result"></ol>
+  <table class="result"></table>
 
 
   <script>
@@ -163,7 +388,7 @@
         "({}) == false",
         "'[object Object]' == 0",
         "NaN == 0",
-        "[] == {}",
+        "[] == ({})",
         "[] == 0",
         "[2] == 2",
         "['0'] == false",
@@ -183,7 +408,6 @@
         "undefined == 'undefined'",
         "null == 'null'",
         "'' == !''",
-        "[] == [null] == [undefined] == '' == 0",
         "[] == [null]",
         "[] == [undefined]",
         "[] == ''",
@@ -218,11 +442,18 @@
       }
     })
   </script>
-  <div class="credit">
+  <!-- <div class="credit">
     <a href="https://github.com/nendonerd/coercion-visual-demo">Github Repo</a><br>
     <a href="https://nendo.ml">My Blog</a>
+  </div> -->
+  <div class="ribbon">
+    <a href="https://github.com/nendonerd/coercion-visual-demo" target="_blank">Fork me on GitHub</a>
   </div>
-
+  <div class="desc"><p>this is an interactive demo about javascript type coercion in '==' (loosy equalling operator).
+    It follows the complicated
+    <a href="https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison">ECMA spec
+      coercion rules</a>
+    to show every step of type conversions in a coercion.</p></div>
   </div>
 </body>
 </html>

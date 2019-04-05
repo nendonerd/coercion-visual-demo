@@ -95,16 +95,28 @@ function renderInBrowser(data, end) {
   } else {
     let typeA = typeOf(data.a)
     let typeB = typeOf(data.b)
-    msg = (`${JSON.stringify(data.a)}, ${typeA}`).padEnd(30, ' ') + '|' + ' '.repeat(10) + (`${JSON.stringify(data.b)}, ${typeB}`)
+    msg = [(`${JSON.stringify(data.a)}: ${typeA}`), (`${JSON.stringify(data.b)}: ${typeB}`)]
   }
 
   let result = document.querySelector('.result')
+  let step = document.createElement('tr')
 
-  let step = document.createElement('li')
-  let pre = document.createElement('pre') // for preserving spaces
+  if (typeof msg !== 'string') {
 
-  pre.textContent = msg
-  step.append(pre)
+    let td0 = document.createElement('td') // for preserving spaces
+    let td1 = document.createElement('td')
+
+    td0.textContent = msg[0]
+    td1.textContent = msg[1]
+
+    step.append(td0)
+    step.append(td1)
+  } else {
+    let td = document.createElement('td')
+    td.textContent = msg
+    td.colSpan="2"
+    step.append(td)
+  }
 
   result.append(step)
 
