@@ -44,5 +44,7 @@ Shift + Cmd + P -> quokka start
 ## Todo list:
 - [x] add quick tests to frontend
 - [x] unit testing
+- [x] fix JSON.stringify(NaN) => null bug
+- [x] fix double result bug
 - [ ] better css visuals (type highlighting)
 - [ ] node interface

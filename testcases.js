@@ -1,4 +1,4 @@
-[
+module.exports = [
   "[] == []",
   "({}) == ({})",
   "({}) == !({})",
@@ -37,3 +37,7 @@
   "[undefined] == 0",
   "'' == 0"
 ]
+
+JSON.stringify(NaN) //?
+isNaN(NaN) //?
+// return isNaN(x) ? NaN : JSON.stringify(x)

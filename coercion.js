@@ -5,6 +5,7 @@ function coerceCompare(a, b) {
   let data = {a: a, b: b}
 
   if (set.size === 1) {return a === b}
+
   if (set.has('Array') && set.has('Object')) {
     render(data, String(a === b))
     return a === b
@@ -31,11 +32,11 @@ function coerceCompare(a, b) {
     render(data)
   }
   if (set.has('Undefined') && set.has('Null')) {
-    render(data, 'true')
+    // render(data, 'true')
     return true
   }
   if (set.has('Undefined') || set.has('Null')) {
-    render(data, 'false')
+    // render(data, 'false')
     return false
   }
 
@@ -93,9 +94,11 @@ function renderInBrowser(data, end) {
   if (end !== undefined) {
     msg = String(end)
   } else {
+    let valA = isNaN(data.a) ? NaN : JSON.stringify(data.a)
+    let valB = isNaN(data.b) ? NaN : JSON.stringify(data.b)
     let typeA = typeOf(data.a)
     let typeB = typeOf(data.b)
-    msg = [(`${JSON.stringify(data.a)}: ${typeA}`), (`${JSON.stringify(data.b)}: ${typeB}`)]
+    msg = [(`${valA}: ${typeA}`), (`${valB}: ${typeB}`)]
   }
 
   let result = document.querySelector('.result')
@@ -123,4 +126,5 @@ function renderInBrowser(data, end) {
 }
 
 
-if (module) {module.exports = coerceCompare}
+try {module.exports = coerceCompare}
+catch(e) {}
