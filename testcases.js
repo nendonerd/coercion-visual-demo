@@ -41,3 +41,5 @@ module.exports = [
 JSON.stringify(NaN) //?
 isNaN(NaN) //?
 // return isNaN(x) ? NaN : JSON.stringify(x)
+isNaN({}) //?
+Number.isNaN({}) //?

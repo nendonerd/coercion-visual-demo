@@ -94,8 +94,8 @@ function renderInBrowser(data, end) {
   if (end !== undefined) {
     msg = String(end)
   } else {
-    let valA = isNaN(data.a) ? NaN : JSON.stringify(data.a)
-    let valB = isNaN(data.b) ? NaN : JSON.stringify(data.b)
+    let valA = Number.isNaN(data.a) ? NaN : JSON.stringify(data.a)
+    let valB = Number.isNaN(data.b) ? NaN : JSON.stringify(data.b)
     let typeA = typeOf(data.a)
     let typeB = typeOf(data.b)
     msg = [(`${valA}: ${typeA}`), (`${valB}: ${typeB}`)]

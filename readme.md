@@ -46,5 +46,6 @@ Shift + Cmd + P -> quokka start
 - [x] unit testing
 - [x] fix JSON.stringify(NaN) => null bug
 - [x] fix double result bug
+- [ ] add a domain for the example
 - [ ] better css visuals (type highlighting)
 - [ ] node interface
