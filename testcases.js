@@ -43,3 +43,6 @@ isNaN(NaN) //?
 // return isNaN(x) ? NaN : JSON.stringify(x)
 isNaN({}) //?
 Number.isNaN({}) //?
+
+let arr = ['a']
+arr.includes('a') //?

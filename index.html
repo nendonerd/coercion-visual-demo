@@ -125,11 +125,11 @@
       tr td {
         background: #EBEBEB;
       }
-      tr:hover td {
+      /* tr:hover td {
         background:#4E5066;
         color:#FFFFFF;
         border-top: 1px solid #22262e;
-      }
+      } */
 
       tr:first-child {
         border-top:none;
@@ -139,17 +139,17 @@
         border-bottom:none;
       }
 
-      tr:last-child td {
+      /* tr:last-child td {
         background:#FFF;
-      }
+      } */
 
       /* tr:nth-child(odd) td {
         background:#EBEBEB;
       } */
 
-      tr:nth-child(odd):hover td {
+      /* tr:nth-child(odd):hover td {
         background:#4E5066;
-      }
+      } */
 
       tr:last-child td:first-child {
         border-bottom-left-radius:3px;
@@ -157,6 +157,27 @@
 
       tr:last-child td:last-child {
         border-bottom-right-radius:3px;
+      }
+
+      tr {
+        position: relative;
+      }
+
+      tr .tipBox {
+        position: absolute;
+        /* visibility: hidden; */
+
+
+      /*   top: 10px; */
+        /* left: 0px; */
+        padding: 10px 20px;
+        border: 1px solid #b3c9ce;
+        border-radius: 4px;
+        text-align: center;
+        font: italic 14px/1.3 arial, sans-serif;
+        color: #333;
+        background: #fff;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
       }
 
       td {
@@ -171,7 +192,7 @@
         width: 50%;
       }
 
-      td:last-child {
+      td:last-of-type {
         border-right: 0px;
       }
 
@@ -181,6 +202,15 @@
 
       td {
         text-align: center;
+      }
+
+      table tr.true td {
+        background:#FFF;
+      }
+      table tr.false td {
+        background:#4E5066;
+        color:#FFFFFF;
+        border-top: 1px solid #22262e;
       }
 
 
@@ -227,12 +257,15 @@
         bottom: 5%;
         margin: 5% 0;
         height: 950px;
-        width: 80%;
+        width: 95%;
         /* border: 1px solid black; */
         box-shadow: 0 0 1em rgba(0,0,0,.2);
         padding: 2%;
 
       }
+      /* table {
+        max-width: 500px;
+      } */
 
       .intro {
         display: block;
@@ -252,7 +285,7 @@
 
       .test {
         float: right;
-        width: 40%;
+        width: 25%;
         display: flex;
         flex-direction: column;
         /* flex-wrap: wrap; */
@@ -262,6 +295,9 @@
       }
       .test .case {
         margin-top: 2px;
+      }
+      .test .case input:hover, .test .case label:hover {
+        cursor: pointer;
       }
 
       .coercion {
@@ -281,11 +317,6 @@
         height: 100%;
         margin: 0;
         margin-left: 20px;
-      }
-      .coercion .button {
-        /* display: block; */
-        /* vertical-align: top; */
-
       }
 
       .coercion .equal {
@@ -321,7 +352,7 @@
         width: 70%;
       }
       .test {
-        width: 30%
+        width: 27%
       }
       .ribbon {
         left: -40px;
@@ -346,9 +377,9 @@
   </div>
 
   <form class='coercion' autocomplete="off">
-    <input type="text" id='a' class='input' required/>
+    <input type="text" id='x' class='input' required/>
     <div class='equal'>==</div>
-    <input type="text" id='b' class='input' required/>
+    <input type="text" id='y' class='input' required/>
     <div class="buttonWrapper">
     <input type="submit" class="coerce button" value="Coerce" />
     <input type="submit" class="clear button" value="Clear" />
@@ -368,20 +399,21 @@
         return
       }
       document.querySelector('.result').innerHTML = ''
-      let a = eval(document.querySelector('#a').value)
-      let b = eval(document.querySelector('#b').value)
-      render({a,b})
-      let res = String(coerceCompare(a, b))
-      console.log(res)
-      render(null, res)
+      let x = eval(document.querySelector('#x').value)
+      let y = eval(document.querySelector('#y').value)
+      render({x,y})
+      // let res = String(coerceCompare(a, b))
+      // console.log(res)
+      // render(null, res)
+      coerceCompare(x, y)
     }
 
     let clear = document.querySelector('.clear')
     clear.onclick = (e) => {
       e.preventDefault()
       document.querySelector('.result').innerHTML = ''
-      document.querySelector('#a').value = null
-      document.querySelector('#b').value = null
+      document.querySelector('#x').value = null
+      document.querySelector('#y').value = null
     }
 
   </script>
@@ -442,9 +474,9 @@
       if (e.target.matches('input')) {
         let input = e.target
         console.log(input.value)
-        let [a, b] = input.value.split(' == ')
-        document.querySelector('#a').value = a
-        document.querySelector('#b').value = b
+        let [x, y] = input.value.split(' == ')
+        document.querySelector('#x').value = x
+        document.querySelector('#y').value = y
         document.querySelector('.coerce').click()
       }
     })
