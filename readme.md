@@ -1,6 +1,6 @@
 # Coercion Visual Demo
 this is an interactive demo about javascript type coercion in '==' (loosy equalling operator)
-It follows the complicated [ECMA spec coercion rules](https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison) to show every step of type conversions happened in a coercion.
+It follows the complicated [ECMA spec coercion rules](https://262.ecma-international.org/5.1/#sec-11.9.3) to show every step of type conversions happened in a coercion.
 
 ## [Online Example](https://coercion.live)
 ## [My Blog](https://nendo.ml)
